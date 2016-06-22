@@ -20,6 +20,9 @@ Importer.Slack = class Importer.Slack extends Importer.Base
 				if entry.entryName.indexOf('__MACOSX') > -1
 					#ignore all of the files inside of __MACOSX
 					@logger.debug("Ignoring the file: #{entry.entryName}")
+				if entry.entryName.indexOf('.DS_Store') > -1
+					#ignore all of the files inside of __MACOSX
+					@logger.debug("Ignoring the file: #{entry.entryName}")
 				else if entry.entryName == 'channels.json'
 					@updateProgress Importer.ProgressStep.PREPARING_CHANNELS
 					tempChannels = JSON.parse entry.getData().toString()
